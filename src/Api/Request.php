@@ -54,6 +54,7 @@ class Request
         'X-APP-VERSION: f9d1262',
         'X-Pinterest-AppState:active',
         'X-Requested-With: XMLHttpRequest',
+        'X-Pinterest-PWS-Handler: www/[username]/[slug].js'
 ];
 
     /**
