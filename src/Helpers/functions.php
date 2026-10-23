@@ -38,12 +38,12 @@ function trait_uses_recursive($trait)
 /**
  * Returns array's value by key using dot notation.
  *
- * @param string $key
  * @param array $data
+ * @param string $key
  * @param mixed $default
  * @return array|bool|mixed
  */
-function get_array_data($key = '', $data, $default = null)
+function get_array_data($data, $key = '', $default = null)
 {
     if (empty($key)) {
         return $data;

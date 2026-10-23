@@ -78,7 +78,7 @@ class Response implements PaginatedResponse
      */
     public function getData($key = '', $default = null)
     {
-        return get_array_data($key, $this->data, $default);
+        return get_array_data($this->data, $key, $default);
     }
 
     /**
@@ -87,7 +87,7 @@ class Response implements PaginatedResponse
      */
     public function hasData($key = '')
     {
-        return get_array_data($key, $this->data) !== null;
+        return get_array_data($this->data, $key) !== null;
     }
 
     /**
@@ -99,14 +99,14 @@ class Response implements PaginatedResponse
      */
     protected function parseResponseData($key = null)
     {
-        $responseData = get_array_data('resource_response.data', $this->data);
+        $responseData = get_array_data($this->data, 'resource_response.data');
 
         if (!$responseData) {
             return false;
         }
 
         return $key ?
-            get_array_data($key, $responseData) :
+            get_array_data($responseData, $key) :
             $responseData;
     }
 
@@ -224,7 +224,7 @@ class Response implements PaginatedResponse
 
     protected function fillError()
     {
-        $errorData = get_array_data('resource_response.error', $this->data);
+        $errorData = get_array_data($this->data, 'resource_response.error');
 
         $this->lastError = new Error($errorData);
 
@@ -233,7 +233,7 @@ class Response implements PaginatedResponse
 
     protected function fillClientInfo()
     {
-        $this->clientInfo = get_array_data('client_context', $this->data);
+        $this->clientInfo = get_array_data($this->data, 'client_context');
 
         return $this;
     }
